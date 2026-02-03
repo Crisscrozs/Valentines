@@ -1,0 +1,100 @@
+body{ 
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: #ffffff;
+	margin: 0;
+}
+.container{
+	text-align: center;
+	padding: 24px;
+}
+.title{
+	color: #dc143c;
+	margin-bottom: 16px;
+}
+#message{
+	color: #dc143c;
+	margin-bottom: 16px;
+}
+.choices{
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	min-width: 260px;
+	min-height: 56px;
+	align-items: center;
+	position: relative; /* positioning context for the moving no button */
+}
+.btn{
+	padding: 10px 18px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 16px;
+.hover-gif{
+	position: absolute; /* use absolute positioning relative to the document */
+	z-index: 11000;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateY(-6px);
+	transition: opacity 200ms ease, transform 200ms ease;
+}
+.hover-gif.show{
+	opacity: 1;
+	transform: translateY(0);
+}
+	/* slower, smoother movement */
+	transition: left 600ms cubic-bezier(.2,.9,.3,1), top 600ms cubic-bezier(.2,.9,.3,1), transform 300ms ease;
+}
+.btn-yes{
+	background: #2ecc71;
+	color: white;
+}
+.btn-no{
+	background: #cccccc;
+	color: #333;
+	background: #e74c3c;
+	color: #fff;
+	/* disable left/top movement animation for No button; keep transform transition */
+	transition: transform 300ms ease;
+}
+.floating-msg{
+	color: #333;
+	font-weight: bold;
+	font-size: 18px;
+	opacity: 0;
+	transition: opacity 200ms ease;
+	pointer-events: none;
+	background: #ffc0e0;
+	padding: 12px 18px;
+	border-radius: 20px;
+	max-width: 200px;
+	text-align: center;
+}
+.floating-msg.show{
+	opacity: 1;
+}
+.heart-particle{
+	position: fixed;
+	font-size: 32px;
+	color: #b30059;
+	pointer-events: none;
+	opacity: 1;
+	z-index: 99999;
+}
+.heart-particle.fall{
+	animation: fall var(--duration, 3000ms) ease-in forwards;
+}
+@keyframes fall{
+	0%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(100vh) translateX(var(--drift, 0));
+	}
+}
