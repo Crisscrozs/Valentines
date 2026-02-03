@@ -105,6 +105,12 @@ function initButtons(){
         }
     }
 
+    noBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    
     yesBtn.addEventListener('click', () => {
         // create heart particles
         createHeartParticles();
@@ -456,3 +462,4 @@ if(document.readyState === 'loading'){
 } else {
     initButtons();
 }
+
