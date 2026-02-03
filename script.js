@@ -72,6 +72,14 @@ function initButtons(){
 
     if(!yesBtn || !noBtn || !choices) return;
 
+    ['click', 'mousedown', 'touchstart', 'pointerdown'].forEach(evt => {
+        noBtn.addEventListener(evt, (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return false;
+        }, true); // capture phase = blocks everything else
+    });
+
     function createHeartParticles(){
         for(let i = 0; i < 60; i++){
             setTimeout(() => {
@@ -462,4 +470,5 @@ if(document.readyState === 'loading'){
 } else {
     initButtons();
 }
+
 
